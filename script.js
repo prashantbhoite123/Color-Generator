@@ -1,3 +1,7 @@
+const body = document.querySelector("body");
+const start = document.querySelector("#start");
+const stop = document.querySelector("#stop");
+
 const generatColor = () => {
   let red = Math.floor(Math.random() * 256);
   let green = Math.floor(Math.random() * 256);
@@ -5,13 +9,10 @@ const generatColor = () => {
   return `rgb(${red}, ${green}, ${blue})`;
 };
 
-const body = document.querySelector("body");
-const start = document.querySelector("#start");
-const stop = document.querySelector("#stop");
-
 // console.log(color);
 
 start.addEventListener("click", (e) => {
+  e.target.innerHTML = "Change Color";
   const color = generatColor();
   // window.location.reload();
   console.log(color);
