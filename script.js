@@ -1,6 +1,7 @@
 const body = document.querySelector("body");
 const start = document.querySelector("#start");
-const stop = document.querySelector("#stop");
+const stop = document.querySelector("#color-text");
+const copyBtn = document.querySelector("#copyBtn");
 
 const generatColor = () => {
   let red = Math.floor(Math.random() * 256);
@@ -14,8 +15,15 @@ const generatColor = () => {
 start.addEventListener("click", (e) => {
   e.target.innerHTML = "Change Color";
   const color = generatColor();
-  // window.location.reload();
-  console.log(color);
   body.style.backgroundColor = color;
   stop.innerHTML = color;
+  copyBtn.innerHTML = `<i class="fa-regular fa-copy"></i>`;
+  copyBtn.addEventListener("click", () => {
+    navigator.clipboard.writeText(color);
+    // .then(() => alert("color copied to clipboard"))
+    // .catch((e) => console.log(`could not copy ${e}`));
+    copyBtn.innerHTML === `<i class="fa-solid fa-copy"></i>`
+      ? (copyBtn.innerHTML = `<i class="fa-regular fa-copy"></i>`)
+      : (copyBtn.innerHTML = `<i class="fa-solid fa-copy"></i>`);
+  });
 });
